@@ -3,9 +3,7 @@
 import argparse
 import xml.etree.ElementTree as ET
 
-def listParts(tree):
-    root = tree.getroot()
-
+def listParts(root):
     #
     # The tags we are interested in:
     #
@@ -34,8 +32,14 @@ def listParts(tree):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("xmlfile", help="name of the xml file")
+    parser.add_argument("xmlfile", nargs='?', type=argparse.FileType('r'), default='-', help="name of the xml file or - for stdin")
     args = parser.parse_args()
-    tree = ET.parse(args.xmlfile)
-    listParts(tree)
+
+    #
+    # Parse XML
+    #
+
+    root = ET.fromstring(args.xmlfile.read())
+
+    listParts(root)
 
