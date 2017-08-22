@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import sys
 import argparse
 import xml.etree.ElementTree as ET
 
@@ -15,12 +16,15 @@ def keepPart(root, partid):
     #
 
 #    print root.tag
+    success = False
     for a in root.findall('part-list'):
 #        print "a", a
         for b in a.findall('score-part'):
 #            print "b", b
             if b.attrib['id'] != partid:
                 a.remove(b)
+            else:
+                success = True
         for b in a.findall('part-group'):
             a.remove(b)
 
@@ -34,6 +38,8 @@ def keepPart(root, partid):
 #            print "removing", a.attrib['id']
             root.remove(a)
 
+    if not success:
+        sys.exit("Part ID '" + partid + "' does not exist")
 
 #
 # Parse command line arguments
