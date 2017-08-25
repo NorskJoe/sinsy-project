@@ -16,7 +16,7 @@ Please refer to the Documentation directory for more information.
 
 ## Optional software:
 
-Sinsy - http://sinsy.sourceforge.net/
+- Sinsy - http://sinsy.sourceforge.net/
 
 ## Alternative Singing Voice Synthesis software
 
@@ -24,6 +24,8 @@ This project focuses on Sinsy, however there are other software packages
 that can be used for singing synthesis.
 
 ### espeak / ecantorix
+
+From the espeak website:
 
 > eSpeak uses a "formant synthesis" method. This allows many languages to be provided in a small size. The speech is clear, and can be used at high speeds, but is not as natural or smooth as larger synthesizers which are based on human speech recordings.
 
