@@ -167,7 +167,7 @@ if __name__ == "__main__":
         outwavdata.append(struct.pack("h", value))
 
         
-    temp = tempfile.NamedTemporaryFile(mode='wb', delete=False)
+    temp = tempfile.NamedTemporaryFile(mode='wb', delete=False, dir='.')
     outwav = wave.open(temp)
     outwav.setnchannels(nchannels)
     outwav.setsampwidth(sampwidth)
