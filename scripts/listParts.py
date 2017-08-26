@@ -24,7 +24,7 @@ def listParts(root):
             partname = ''
             for c in b.findall('part-name'):
                 partname = c.text
-            print "Part ID:", partid, "  Part Name:", partname
+            print "Part ID:", partid, "  Part Name:", partname.encode('UTF-8')
 
 #
 # Parse command line arguments
