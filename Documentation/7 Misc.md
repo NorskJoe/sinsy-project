@@ -43,11 +43,12 @@ Example usage:
 This will replace all the lyrics text with the specified string.
 
 ```
-usage: replaceLyrics.py [-h] xmlfile replace
+usage: replaceLyrics.py [-h] xmlfile lyrics
 
 positional arguments:
   xmlfile     name of the xml file or - for stdin
-  replace     replace lyrics with this string
+  lyrics      replace lyrics with new lyrics, syllables separated by
+              whitespace, in a single argument enclosed in quotes
 
 optional arguments:
   -h, --help  show this help message and exit
