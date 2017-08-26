@@ -1,15 +1,19 @@
 #!/usr/bin/python
 
+import re
 import argparse
 import xml.etree.ElementTree as ET
 
-def replaceLyrics(root, replaceString):
+def replaceLyrics(root, lyrics):
+    n = len(lyrics)
+    i = 0
     for a in root.findall('part'):
         for b in a.findall('measure'):
             for c in b.findall('note'):
                 for d in c.findall('lyric'):
                     for e in d.findall('text'):
-                        e.text = replaceString
+                        e.text = lyrics[i%n]
+                        i+=1
 
 
 #
@@ -19,15 +23,17 @@ def replaceLyrics(root, replaceString):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("xmlfile", type=argparse.FileType('r'), help="name of the xml file or - for stdin")
-    parser.add_argument("replace", help="replace lyrics with this string")
+    parser.add_argument("lyrics", help="replace lyrics with new lyrics, words separated by whitespace, in a single argument enclosed in quotes")
     args = parser.parse_args()
+
+    lyrics = re.split(r'\s+', args.lyrics.decode('UTF-8'))
 
     #
     # Parse XML
     #
 
     root = ET.fromstring(args.xmlfile.read())
-    replaceLyrics(root, args.replace.decode('UTF-8'))
+    replaceLyrics(root, lyrics)
 
     #
     # Output modified XML
