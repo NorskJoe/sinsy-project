@@ -23,7 +23,7 @@ def replaceLyrics(root, lyrics):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("xmlfile", type=argparse.FileType('r'), help="name of the xml file or - for stdin")
-    parser.add_argument("lyrics", help="replace lyrics with new lyrics, words separated by whitespace, in a single argument enclosed in quotes")
+    parser.add_argument("lyrics", help="replace lyrics with new lyrics, syllables separated by whitespace, in a single argument enclosed in quotes")
     args = parser.parse_args()
 
     lyrics = re.split(r'\s+', args.lyrics.decode('UTF-8'))
