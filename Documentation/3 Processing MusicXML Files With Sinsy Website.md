@@ -41,12 +41,11 @@ optional arguments:
                        Ling 2=Namine Ritsu S 3=undefined 7=Yoko DNN, English
                        voices: 4=Xiang-Ling 5=Matsuo-P, Mandarin voices: 6
                        =Xiang-Ling
-  --synalpha SYNALPHA  synalpha, default is 0.55
-  --vibpower VIBPOWER  vibpower, default is 1
-  --f0shift F0SHIFT    f0shift, default is 0
+  --synalpha SYNALPHA  synalpha, default is 0.55 (-0.8 to 0.8)
+  --vibpower VIBPOWER  vibpower, default is 1 (0.0 to 2.0)
+  --f0shift F0SHIFT    f0shift, default is 0 (-24 to 24)
 ```
 
 Example usage:
 
 > $ python upload.py --spkrlang english --spkr 4 --synalpha 0.55 --vibpower 1 --f0shift 0 input.xml output.wav
-

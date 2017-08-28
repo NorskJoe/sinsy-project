@@ -73,6 +73,7 @@ positional arguments:
 optional arguments:
   -h, --help  show this help message and exit
 ```
+<!-- @Arthur - is there a limit to how many half steps we can alter? -->
 
 Example usage:
 
@@ -83,4 +84,3 @@ This will shift it up 4 half steps.
 This will shift it down 4 half steps.
 
 > $ python replaceWithHarmony input.xml -4
-
