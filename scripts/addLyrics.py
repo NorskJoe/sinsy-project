@@ -41,7 +41,9 @@ if __name__ == "__main__":
     parser.add_argument("lyrics", help="replace lyrics with new lyrics, syllables separated by whitespace, in a single argument enclosed in quotes")
     args = parser.parse_args()
 
-    lyrics = re.split(r'\s+', args.lyrics.decode('UTF-8'))
+    lyrics = args.lyrics.decode('UTF-8')
+    lyrics = re.sub('[<>]', '', lyrics)
+    lyrics = re.split(r'\s+', lyrics)
 
     #
     # Parse XML
