@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import sys
 import argparse
 import subprocess
 import re
@@ -20,12 +21,38 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("infile", help="name of the input xml file")
     parser.add_argument("outfile", help="name of the output wave file")
-    parser.add_argument('--spkrlang', default='english', help="speaker language, 'english', 'japanese', or 'mandarin'")
     parser.add_argument('--spkr', default='4', help="speaker, default is 4, Japanese voices: 0=Yoko 1=Xiang-Ling 2=Namine Ritsu S 3=undefined 7=Yoko DNN, English voices: 4=Xiang-Ling 5=Matsuo-P, Mandarin voices: 6=Xiang-Ling")
-    parser.add_argument('--synalpha', default='0.55', help="synalpha, default is 0.55")
-    parser.add_argument('--vibpower', default='1', help="vibpower, default is 1")
-    parser.add_argument('--f0shift', default='0', help="f0shift, default is 0")
+    parser.add_argument('--synalpha', default='0.55', help="synalpha, default is 0.55 (-0.8 to 0.8)")
+    parser.add_argument('--vibpower', default='1', help="vibpower, default is 1 (0.0 to 2.0)")
+    parser.add_argument('--f0shift', default='0', help="f0shift, default is 0 (-24 to 23)")
 
     args = parser.parse_args()
 
-    requestFromWebsite(args.infile, args.outfile, args.spkrlang, args.spkr, args.synalpha, args.vibpower, args.f0shift)
+    spkrlang = 'english'
+    if args.spkr == '0':
+        spkrlang = 'japanese'
+    elif args.spkr == '1':
+        spkrlang = 'japanese'
+    elif args.spkr == '2':
+        spkrlang = 'japanese'
+    elif args.spkr == '3':
+        spkrlang = 'japanese'
+    elif args.spkr == '7':
+        spkrlang = 'japanese'
+    elif args.spkr == '4':
+        spkrlang = 'english'
+    elif args.spkr == '5':
+        spkrlang = 'english'
+    elif args.spkr == '6':
+        spkrlang = 'mandarin'
+    else:
+        sys.exit("Unknown spkr: " + args.spkr)
+
+    if float(args.synalpha) < -0.8 or float(args.synalpha) > 0.8:
+        sys.exit("The parameter synalpha should be between -0.8 and 0.8")
+    if float(args.vibpower) < 0.0 or float(args.vibpower) > 2.0:
+        sys.exit("The parameter vibpower should be between 0.0 and 2.0")
+    if int(args.f0shift) < -24 or int(args.f0shift) > 23:
+        sys.exit("The parameter f0shift should be between -24 and 23")
+
+    requestFromWebsite(args.infile, args.outfile, spkrlang, args.spkr, args.synalpha, args.vibpower, args.f0shift)
