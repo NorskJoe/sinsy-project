@@ -18,6 +18,12 @@ Please refer to the Documentation directory for more information.
 
 - Sinsy - http://sinsy.sourceforge.net/
 
+## Misc software:
+
+- MuseScore - http://musescore.org
+
+Useful for viewing and playing both MusicXML and MIDI files. Can convert from MIDI to MusicXML.
+
 ## Alternative Singing Voice Synthesis software
 
 This project focuses on Sinsy, however there are other software packages
