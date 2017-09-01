@@ -69,13 +69,13 @@ either using ```upload.py```, directly using the http://sinsy.jp website, or
 by running the ```sinsy``` binary locally if it has been installed.
 
 So now you have an XML file that we'll call ```song.xml```. You also have a
-WAV file that you generated, we'll call it ```song.wav```. Now you use this
-script to process the WAV file using the dynamics information specified
-by the ```song.xml``` file.
+WAV file that you generated from this XML file, we'll call it ```song.wav```.
+Now you use this script to process the WAV file using the dynamics information
+specified by the ```song.xml``` file.
 
 This will generate a new WAV file with using the dynamics and
 crescendo/diminuendo information from the XML file. In this case, the
-```--inxml``` argument would be the ```song.xml``` file. The ```--inwav```
+```--inxml``` argument would be ```song.xml```. The ```--inwav```
 argument would be ```song.wav```.  The new WAV file will be written to *stdout*.
 
 Example usage:
