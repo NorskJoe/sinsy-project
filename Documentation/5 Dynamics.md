@@ -109,8 +109,8 @@ will increase the volume (amplitude) by 50% by multiplying the sound sample
 by 1.5, but clipping is a possibility. A value such as 0.5 will decrease the
 volume by 50% by multiplying the sound sample by 0.5.
 
-In order to avoid sudden amplitude changes (which can be described as a kind of
-staircase effect) the ```--smoothing``` option can be used to specify how long
+In order to avoid sudden amplitude changes 
+the ```--smoothing``` option can be used to specify how long
 it should take for the volume to change. A value of 1.0 means that it will take
 an entire measure to change the volume (the change in volume will be linear).
 This would be basically the same thing as crescendo or diminuendo since the
