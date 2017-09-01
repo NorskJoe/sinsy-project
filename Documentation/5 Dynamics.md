@@ -164,7 +164,7 @@ This is an example of what the ```dynamics.txt``` file might look like:
 ...
 ```
 
-The **number** field indicates the measure, and the *dynamics* field indicates
+The **number** field indicates the measure, and the **dynamics** field indicates
 the dynamics that are applied to that measure. The fields **crescendo** and
 **diminuendo** are either true (1) or false (0).
 
