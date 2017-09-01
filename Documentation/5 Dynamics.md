@@ -169,7 +169,7 @@ the dynamics that are applied to that measure. The fields **crescendo** and
 **diminuendo** are either true (1) or false (0).
 
 The other option for debugging is the ```--outenvelope``` option, which will
-output data that can be plotted using a program like *gnuplot*. The dynamics
+output data that can be plotted using a program like **gnuplot**. The dynamics
 information that gets applied to the WAV file can be thought of as an
 envelope, similar to an Attack-Delay-Sustain-Release (ADSR) envelope.
 
@@ -189,8 +189,6 @@ dynamics):
 
 The x-axis is the sample number (i.e. time) and the y-axis is the amplitude
 (i.e. volume).
-
-```
 
 
 ## printDynamics.py
