@@ -84,7 +84,7 @@ Example usage:
 > $ python applyDynamicsToWAV.py --inxml song.xml --inwav song.wav >output.wav
 
 This will read the XML file from ```song.xml```, the WAV file from
-```song.wav```, and write the WAV file *output.wav*
+```song.wav```, and write the WAV file ```output.wav```
 
 The options ``--p``, ``--f``, and related options allow you to specify the
 actual volume (or amplitude) to use when generating the new WAV file.
@@ -135,7 +135,7 @@ Example usage:
 
 > $ python applyDynamicsToWAV.py --inxml song.xml --inwav song.wav --outdynamics dynamics.txt >/dev/null
 
-This is an example of what the *dynamics.txt* file might look like:
+This is an example of what the ```dynamics.txt``` file might look like:
 
 ```
 {'crescendo': 0, 'dynamics': 'mp', 'diminuendo': 0, 'number': 1}
@@ -164,9 +164,9 @@ This is an example of what the *dynamics.txt* file might look like:
 ...
 ```
 
-The *number* field indicates the measure, and the *dynamics* field indicates
-the dynamics that are applied to that measure. The fields *crescendo* and
-*diminuendo* are either true (1) or false (0).
+The **number** field indicates the measure, and the *dynamics* field indicates
+the dynamics that are applied to that measure. The fields **crescendo** and
+**diminuendo** are either true (1) or false (0).
 
 The other option for debugging is the ```--outenvelope``` option, which will
 output data that can be plotted using a program like *gnuplot*. The dynamics
@@ -177,8 +177,8 @@ Example usage:
 
 > $ python applyDynamicsToWAV.py --inxml song.xml --inwav song.wav --outenvelope envelope.txt >/dev/null
 
-This write the envelope data to the file *envelope.txt* which can be plotted
-using *gnuplot*. First, run *gnuplot* and at the prompt type:
+This write the envelope data to the file ```envelope.txt``` which can be plotted
+using **gnuplot**. First, run **gnuplot** and at the prompt type:
 
 > gnuplot> plot 'envelope.txt' using 1:2
 
