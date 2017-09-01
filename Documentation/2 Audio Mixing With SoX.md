@@ -17,7 +17,7 @@ Let's say you have three WAV files:
 The simplest way to mix them is with this command:
 
 ```
-sox vocals.wav piano.wav drums.wav output.wav
+sox -m vocals.wav piano.wav drums.wav output.wav
 ```
 
 This will use those files as input and the result will be ```output.wav```.
