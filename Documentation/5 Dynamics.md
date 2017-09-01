@@ -74,15 +74,16 @@ script to process the WAV file using the dynamics information specified
 by the ```song.xml``` file.
 
 This will generate a new WAV file with using the dynamics and
-crescendo/diminuendo information. The ```--inxml`` argument would be the
-```song.xml``` file. The ```--inwav``` argument would be the ```song.wav```.
-The new WAV file will be written to *stdout*.
+crescendo/diminuendo information from the XML file. In this case, the
+```--inxml``` argument would be the ```song.xml``` file. The ```--inwav```
+argument would be ```song.wav```.  The new WAV file will be written to *stdout*.
 
 Example usage:
 
 > $ python applyDynamicsToWAV.py --inxml song.xml --inwav song.wav >output.wav
 
-This will read the XML file from stdin and write the WAV file *output.wav*
+This will read the XML file from ```song.xml```, the WAV file from
+```song.wav```, and write the WAV file *output.wav*
 
 The options ``--p``, ``--f``, and related options allow you to specify the
 actual volume (or amplitude) to use when generating the new WAV file.
