@@ -76,7 +76,8 @@ specified by the ```song.xml``` file.
 This will generate a new WAV file with using the dynamics and
 crescendo/diminuendo information from the XML file. In this case, the
 ```--inxml``` argument would be ```song.xml```. The ```--inwav```
-argument would be ```song.wav```.  The new WAV file will be written to *stdout*.
+argument would be ```song.wav```.  The new WAV file will be written to
+```stdout```.
 
 Example usage:
 
