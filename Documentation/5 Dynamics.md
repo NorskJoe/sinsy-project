@@ -96,13 +96,13 @@ actual volume (or amplitude) to use when generating the new WAV file.
 - *f* means loud or strong (forte)
 - *ff* means very loud
 - *fff* means very very loud
-- *ffff* means very very loud
+- *ffff* means very very very loud
 - *mp* means half soft (mezzo piano)
 - *mf* means half loud (mezzo forte)
 
-These notations when used in sheet music is somewhat ambiguous, it is up to
+These notations when used in sheet music are somewhat ambiguous, it is up to
 the interpretation of the performer exactly how soft or how loud the music
-be played. Specifying a value of ```--f 1.0``` means that if the dynamics in
+should be played. Specifying a value of ```--f 1.0``` means that if the dynamics in
 the xml file specify *f*, then the value of 1.0 means that the sound samples
 for that portion of the WAV file will be unaltered. A value such as 1.5
 will increase the volume (amplitude) by 50% by multiplying the sound sample
