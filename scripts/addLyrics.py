@@ -42,7 +42,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     lyrics = args.lyrics.decode('UTF-8')
-    lyrics = re.sub('[<>]', '', lyrics)
+    lyrics = re.sub('[<>(),\']', '', lyrics)
     lyrics = re.split(r'\s+', lyrics)
 
     #
