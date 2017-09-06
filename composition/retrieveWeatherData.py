@@ -23,12 +23,12 @@ def getData(url):
 
     text = soup.find("div", class_="weather_forecastdiv marbot")
     text = str(text.find("p"))
-    text = BeautifulSoup(text, "lxml").text
+    text = BeautifulSoup(text, "lxml").text.encode("ascii", "ignore")
 
-    print "Short forecast: ", skies
-    print "Temperature (Celsius): ", temp[0]
-    print "Wind speed (mph): ", wind
-    print "Long forecast: ", text
+    print skies
+    print temp[0]
+    print wind
+    print text
 
 
 if __name__ == "__main__":
