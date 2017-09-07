@@ -1,22 +1,44 @@
 #!/usr/bin/python
 import argparse
+import re
+import itertools
+import sys
+import nltk
+from nltk.corpus import stopwords
+
+wordBank = \
+{
+    'sunny':0.9,
+    'clear':0.8,
+    'haze':0.7,
+    'overcast':0.6,
+    'partly cloudy':0.5,
+    'cloudy':0.4,
+    'cloud':0.4,
+    'light drizzle':0.3,
+    'light rain':0.3,
+    'rain':0.3,
+    'patchy rain':0.3,
+    'moderate rain':0.2,
+    'heavy rain':0.1,
+    'thundery':0.1
+}
+
+wordPairBank = \
+{
+    ('moderate','rain'):0.3,
+    ('stay','dry'):0.7,
+    ('dry','precipitation'):0.7,
+    ('covering','0'):0.8,
+    ('forecasted','sunny'):0.8,
+    # ('',''):,
+    # ('',''):,
+    # ('',''):,
+    # ('',''):,
+    # ('',''):,
+}
 
 def skyScore(forecast):
-    wordBank = \
-    {
-        'sunny':0.9,
-        'clear':0.8,
-        'haze':0.7,
-        'overcast':0.6,
-        'partly cloudy':0.5,
-        'cloudy':0.4,
-        'light drizzle':0.3,
-        'light rain':0.3,
-        'patchy rain':0.3,
-        'moderate rain':0.2,
-        'heavy rain':0.1,
-        'thundery':0.1
-    }
 
     if forecast.lower() in wordBank:
         return wordBank.get(forecast.lower())
@@ -44,8 +66,7 @@ def tempScore(forecast):
 
 
 def windScore(forecast):
-    score = 0.0
-    # Using Beaufort scale
+    # Using Beaufort scale of  severity
     if forecast <  1:
         return 1.0
     elif forecast < 3:
@@ -69,23 +90,40 @@ def windScore(forecast):
     else:
         return 0.0
 
-    return score
 
 
 def textScore(forecast):
-    score = 0.0
+    # Clean the forecast to remove all irrelevant words and punctuation
+    cleanForecast = re.sub("[^a-zA-Z0-9]", " ", forecast).lower()
 
+    # Create a list of all the meaningful words
+    wordList = cleanForecast.split()
+    meaningfulWordList = [w for w in wordList if not w in stopwords.words("english")]
 
-    return score
+    # Create list of tuples of each adjacent word
+    # i.e "The weather is nice" will create:
+    # (The, weather) (weather, is) (is, nice)
+    a, b = itertools.tee(meaningfulWordList)
+    next(b, None)
+    wordPairList = zip(a, b)
+
+    # Analyse word pairs against predefined word bank and obtain score
+    total = 0.0
+    for wordPair in wordPairList:
+        if wordPair in wordPairBank:
+            total += wordPairBank.get(wordPair)
+    if total == 0.0:
+        return 0.5
+    else:
+        return total/len(wordPairBank)
+
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("weatherdata", default="-", type=argparse.FileType('r'), help="weather report for a city")
-    args = parser.parse_args()
 
-    data = args.weatherdata.read()
-    lines = data.split('\n')
+    lines = []
+    for line in sys.stdin:
+        lines.append(line)
 
     skies = lines[0]
     temp = int(lines[1])

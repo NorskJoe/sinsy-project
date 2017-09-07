@@ -25,10 +25,17 @@ def getData(url):
     text = str(text.find("p"))
     text = BeautifulSoup(text, "lxml").text.encode("ascii", "ignore")
 
-    print skies
-    print temp[0]
-    print wind
-    print text
+    toPrint = ""
+    toPrint += skies + '\n'
+    toPrint += temp[0] + '\n'
+    toPrint += wind + '\n'
+    toPrint += text
+    print toPrint
+
+    # print skies
+    # print temp[0]
+    # print wind
+    # print text
 
 
 if __name__ == "__main__":
