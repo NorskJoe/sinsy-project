@@ -15,9 +15,10 @@ usage: applyDynamicsToWAV.py [-h] [--inxml INXML] --inwav INWAV
                              [--outdynamics OUTDYNAMICS]
                              [--outenvelope OUTENVELOPE] [--outwav OUTWAV]
                              [--pppp PPPP] [--ppp PPP] [--pp PP] [--p P]
-                             [--mp MP] [--n N] [--mf MF] [--f F] [--ff FF]
-                             [--fff FFF] [--ffff FFFF] [--smoothing SMOOTHING]
-                             [--crescendo CRESCENDO] [--diminuendo DIMINUENDO]
+                             [--mp MP] [--mf MF] [--f F] [--ff FF] [--fff FFF]
+                             [--ffff FFFF] [--sp SP] [--sf SF]
+                             [--smoothing SMOOTHING] [--crescendo CRESCENDO]
+                             [--diminuendo DIMINUENDO]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -33,27 +34,29 @@ optional arguments:
   --outwav OUTWAV       name of output file for wave or stdout if not
                         specified
   --pppp PPPP           value for dynamic pppp, between 0.0 and 1.0, default
-                        is 0.5
+                        is 0.1
   --ppp PPP             value for dynamic ppp, between 0.0 and 1.0, default is
-                        0.5
+                        0.1
   --pp PP               value for dynamic pp, between 0.0 and 1.0, default is
-                        0.5
+                        0.2
   --p P                 value for dynamic p, between 0.0 and 1.0, default is
-                        0.5
+                        0.3
   --mp MP               value for dynamic mp, between 0.0 and 1.0, default is
-                        0.65
-  --n N                 value for dynamic n, between 0.0 and 1.0, default is
-                        0.75
+                        0.4
   --mf MF               value for dynamic mf, between 0.0 and 1.0, default is
-                        0.85
+                        0.6
   --f F                 value for dynamic f, between 0.0 and 1.0, default is
-                        1.0
+                        0.8
   --ff FF               value for dynamic ff, between 0.0 and 1.0, default is
-                        1.0
+                        0.9
   --fff FFF             value for dynamic fff, between 0.0 and 1.0, default is
                         1.0
   --ffff FFFF           value for dynamic ffff, between 0.0 and 1.0, default
                         is 1.0
+  --sp SP               value for dynamic sp, between 0.0 and 1.0, default is
+                        0.3
+  --sf SF               value for dynamic sf, between 0.0 and 1.0, default is
+                        0.8
   --smoothing SMOOTHING
                         value for smoothing dynamic changes, represents time
                         percentage of a measure, default is 0.05

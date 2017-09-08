@@ -37,8 +37,8 @@ optional arguments:
   -h, --help           show this help message and exit
   --spkr SPKR          speaker, default is 4, Japanese voices: 0=Yoko 1=Xiang-
                        Ling 2=Namine Ritsu S 3=undefined 7=Yoko DNN, English
-                       voices: 4=Xiang-Ling 5=Matsuo-P, Mandarin voices: 6
-                       =Xiang-Ling
+                       voices: 4=Xiang-Ling (Female) 5=Matsuo-P (Male),
+                       Mandarin voices: 6=Xiang-Ling
   --synalpha SYNALPHA  synalpha, default is 0.55 (-0.8 to 0.8)
   --vibpower VIBPOWER  vibpower, default is 1 (0.0 to 2.0)
   --f0shift F0SHIFT    f0shift, default is 0 (-24 to 23)
