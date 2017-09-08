@@ -57,7 +57,7 @@ this command:
 
 Finally, these new lyrics can be fed back into the XML file:
 
-> $ python replaceLyrics.py Fragments.xml "`cat newLyrics.txt`" >FragmentsWithNewLyrics.xml
+> $ python replaceLyrics.py Fragments.xml "\`cat newLyrics.txt\`" >FragmentsWithNewLyrics.xml
 
 
 
