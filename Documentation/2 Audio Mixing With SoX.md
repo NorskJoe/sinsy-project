@@ -54,3 +54,17 @@ Example usage:
 
 > $ python soxCompand.py input.wav output.wav
 
+## Normalizing
+
+This command will normalize an audio file to 0 dB:
+
+```
+sox infile.wav outfile.wav gain -n
+```
+
+This command will apply 30 dB of gain with a limiter to prevent clipping:
+
+```
+sox infile.wav outfile.wav gain -l 30
+```
+
