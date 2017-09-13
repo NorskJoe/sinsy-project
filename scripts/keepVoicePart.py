@@ -41,10 +41,8 @@ def keepVoicePart(root, voiceToKeep, partid):
                     for d in c.findall('voice'):
                         voice = d.text
                     if voice != voiceToKeep:
-                        try:
-                            c.remove(d)
-                        except ValueError:
-                            pass
+                        b.remove(c)
+
 
             
 

@@ -7,6 +7,12 @@ def printNotes(root):
     for a in root.findall('part'):
         for b in a.findall('measure'):
             for c in b.findall('note'):
+                chord = ''
+                voice = ''
+                for d in c.findall('chord'):
+                    chord = 'chord'
+                for d in c.findall('voice'):
+                    voice = d.text
                 for d in c.findall('pitch'):
                     step = ''
                     octave = 0
@@ -17,7 +23,7 @@ def printNotes(root):
                         alter = int(e.text)
                     for e in d.findall('octave'):
                         octave = int(e.text)
-                    print "step", step, "alter", alter, "octave", octave
+                    print "part", a.attrib['id'], "measure", b.attrib['number'], "voice", voice, "step", step, "alter", alter, "octave", octave, chord
 
 
 #
