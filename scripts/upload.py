@@ -9,9 +9,12 @@ def requestFromWebsite(infile, outfile, spkrlang, spkr, synalpha, vibpower, f0sh
     htmlOutput = subprocess.check_output([ 'curl', '-v', '-F', 'LANG=jp', '-F', 'SPKR_LANG='+spkrlang, '-F', 'SPKR='+spkr, '-F', 'SYNALPHA='+synalpha, '-F', 'VIBPOWER='+vibpower, '-F', 'F0SHIFT='+f0shift, '-F', 'SYNSRC=@' + infile, 'http://sinsy.sp.nitech.ac.jp/index.php' ])
 
     m = re.search('\.\/(temp\/[0-9_]+\.wav)', htmlOutput)
-    wavFile = m.group(0)
+    try:
+        wavFile = m.group(0)
+        subprocess.check_call(['curl', '-o', outfile, 'http://sinsy.sp.nitech.ac.jp/' + wavFile])
+    except:
+        print "It seems your XML file is invalid. Inconceivable!"
 
-    subprocess.check_call(['curl', '-o', outfile, 'http://sinsy.sp.nitech.ac.jp/' + wavFile])
 
 #
 # Parse command line arguments

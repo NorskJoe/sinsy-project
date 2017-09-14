@@ -4,7 +4,7 @@ import re
 import argparse
 import xml.etree.ElementTree as ET
 
-def replaceLyrics(root, lyrics):
+def addLyrics(root, lyrics):
     n = len(lyrics)
     i = 0
     for a in root.findall('part'):
@@ -21,9 +21,16 @@ def replaceLyrics(root, lyrics):
                 if not hasLyric:
                     lyricElt = ET.SubElement(c, 'lyric')
                 for d in c.findall('lyric'):
+                    hasSyllabic = False
                     hasLyricText = False
+                    for e in d.findall('syllabic'):
+                        hasSyllabic = True
                     for e in d.findall('text'):
                         hasLyricText = True
+                    if not hasSyllabic:
+                        syllabicElt = ET.SubElement(d, 'syllabic')
+                    for e in d.findall('syllabic'):
+                        e.text = 'single'
                     if not hasLyricText:
                         lyricTextElt = ET.SubElement(d, 'text')
                     for e in d.findall('text'):
@@ -38,7 +45,7 @@ def replaceLyrics(root, lyrics):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("xmlfile", type=argparse.FileType('r'), help="name of the xml file or - for stdin")
-    parser.add_argument("lyrics", help="replace lyrics with new lyrics, syllables separated by whitespace, in a single argument enclosed in quotes")
+    parser.add_argument("lyrics", help="add lyrics, syllables separated by whitespace, in a single argument enclosed in quotes")
     args = parser.parse_args()
 
     lyrics = args.lyrics.decode('UTF-8')
@@ -50,7 +57,7 @@ if __name__ == "__main__":
     #
 
     root = ET.fromstring(args.xmlfile.read())
-    replaceLyrics(root, lyrics)
+    addLyrics(root, lyrics)
 
     #
     # Output modified XML
