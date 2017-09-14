@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 from addLyrics import addLyrics
 
 syllableDictionary = {
+'melbourne' : 'mell born',
 'london' : 'lon don',
 'the' : 'the',
 'weather' : 'weh ther',
@@ -49,11 +50,17 @@ syllableDictionary = {
 'covering' : 'kah ver ring',
 'sky' : 'sky',
 'humidity' : 'hue mih dih tee',
+'we' : 'we',
+'expect' : 'ex pect',
+'mm' : 'mill ih mee ters',
+'fall' : 'fall',
+'i' : 'eye',
+'e' : 'ee',
 }
 
 def breakIntoSyllables(text):
     text = text.decode('UTF-8').lower()
-    text = re.sub('[^a-zA-Z \n]', '', text)
+    text = re.sub('[^a-zA-Z \n]', ' ', text)
     text = re.split(r'\s+', text)
     results = []
     for word in text:
@@ -101,7 +108,7 @@ def generateXML(arr):
         if measureNumber == 1:
             direction = ET.SubElement(measure, 'direction')
             sound = ET.SubElement(direction, 'sound')
-            sound.attrib['tempo'] = '195'
+            sound.attrib['tempo'] = '300'
         measureNumber += 1
         note = ET.SubElement(measure, 'note')
 #        type = ET.SubElement(note, 'type')
