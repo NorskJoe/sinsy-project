@@ -142,26 +142,29 @@ def generateStochasticSong():
     verseScale = [0, 2, 4, 5, -1]
     chorusScale = [0, 2, 4, 5, 7, 9, -1]
     riff = generateStochasticMelody(verseScale, 4)
-    verseLine = []
-    verseLine.extend(riff)
-    verseLine.extend(riff)
-    verseLine.extend(riff)
-    verseLine.append(verseScale[0])
-    verseLine.append(99)
-    verseLine.append(99)
-    verseLine.append(99)
     verse = []
-    verse.extend(verseLine)
-    verse.extend(verseLine)
-    chorusLine = generateStochasticMelody(chorusScale, 7)
-    chorusLine.append(99)
-    chorus = []
-    chorus.extend(chorusLine)
-    chorus.extend(chorusLine)
+    verse.extend(riff)
+    verse.extend(riff)
+    verse.extend(riff)
+    verse.append(verseScale[0])
+    verse.append(99)
+    verse.append(99)
+    verse.append(99)
+    chorus = generateStochasticMelody(chorusScale, 7)
+    chorus[0] = chorusScale[5];
+    chorus.append(99)
     song = []
     song.extend(verse)
+    song.extend(verse)
+    chorus[6] = chorusScale[1];
+    song.extend(chorus)
+    chorus[6] = chorusScale[2];
     song.extend(chorus)
     song.extend(verse)
+    song.extend(verse)
+    chorus[6] = chorusScale[1];
+    song.extend(chorus)
+    chorus[6] = chorusScale[0];
     song.extend(chorus)
     return song
 
@@ -176,10 +179,6 @@ if __name__ == "__main__":
     parser.add_argument("songname", help="name of the song")
     parser.add_argument("lyricsfile", type=argparse.FileType('r'), help="name of the lyrics file")
     args = parser.parse_args()
-
-    #
-    # Parse XML
-    #
 
     songnameSyllables = breakIntoSyllables(args.songname)
     lyricSyllables = breakIntoSyllables(args.lyricsfile.read())
@@ -200,7 +199,7 @@ if __name__ == "__main__":
     addLyrics(root, lyrics)
 
     #
-    # Output modified XML
+    # Output XML
     #
 
 #    print """<?xml version="1.0" encoding='UTF-8' standalone='no' ?>

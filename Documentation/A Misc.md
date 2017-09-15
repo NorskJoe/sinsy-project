@@ -47,3 +47,32 @@ This will shift it up 4 half steps.
 This will shift it down 4 half steps.
 
 > $ python replaceWithHarmony input.xml -4
+
+## generateStochasticSong.py
+
+This will generate an stochastic song based on the name and lyrics given in
+the arguments. Make sure you have enough lyrics for a song (about 60
+syllables should be enough). If there are unrecognized words you will have
+to add them to the syllable dictionary in the script.
+
+```
+usage: generateStochasticSong.py [-h] songname lyricsfile
+
+positional arguments:
+  songname    name of the song
+  lyricsfile  name of the lyrics file
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+Example usage:
+
+First generate some lyrics using the weather script:
+
+> $ python retrieveWeatherData.py London >lyrics.txt
+
+Then use those lyrics to generate the song:
+
+> $ python generateStochasticSong.py London lyrics.txt >london.xml
+

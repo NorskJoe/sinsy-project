@@ -51,3 +51,42 @@ Example usage:
 
 This will read the `input.xml` file and extract voice `1` from part `P1`.
 
+## useChordNotes.py
+
+This script will replace the first note of the chord with the second note
+of the chord, which may be better for rendering with Sinsy.
+
+```
+usage: useChordNotes.py [-h] [xmlfile]
+
+positional arguments:
+  xmlfile     name of the xml file or - for stdin
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+Example usage:
+
+> $ python useChordNotes.py Fragments.xml
+
+## useVoice.py
+
+This script will replace the note for the first voice with the note for 
+the specified voice, which may be better for rendering with Sinsy.
+
+```
+usage: useVoice.py [-h] xmlfile voice
+
+positional arguments:
+  xmlfile     name of the xml file or - for stdin
+  voice       voice to use
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+Example usage:
+
+> $ python useVoice.py moments.xml 2
+

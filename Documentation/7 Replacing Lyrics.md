@@ -36,7 +36,7 @@ optional arguments:
 
 Example usage:
 
-> $ python replaceLyrics.py input.xml la
+> $ python replaceLyrics.py input.xml "these are the lyrics and they will just repeat"
 
 ### Changing All The Lyrics
 
@@ -60,4 +60,23 @@ Finally, these new lyrics can be fed back into the XML file:
 > $ python replaceLyrics.py Fragments.xml "\`cat newLyrics.txt\`" >FragmentsWithNewLyrics.xml
 
 
+## addLyrics.py
+
+If the XML file does not have <lyric> tags this script will add them.
+
+```
+usage: addLyrics.py [-h] xmlfile lyrics
+
+positional arguments:
+  xmlfile     name of the xml file or - for stdin
+  lyrics      add lyrics, syllables separated by whitespace, in a single
+              argument enclosed in quotes
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+Example usage:
+
+> $ python addLyrics.py input.xml "these are the lyrics and they will just repeat"
 
