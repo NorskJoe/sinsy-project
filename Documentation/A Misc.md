@@ -77,3 +77,5 @@ Then use those lyrics to generate the song:
 
 > $ python generateStochasticSong.py London lyrics.txt major >london.xml
 
+It sounds better if you turn the volume all the way down to -11.
+
