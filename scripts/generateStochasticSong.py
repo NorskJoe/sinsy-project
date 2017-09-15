@@ -138,9 +138,7 @@ def generateStochasticMelody(scale, numberOfNotes):
         results.append(scale[num])
     return results
 
-def generateStochasticSong():
-    verseScale = [0, 2, 4, 5, -1]
-    chorusScale = [0, 2, 4, 5, 7, 9, -1]
+def generateStochasticSong(verseScale, chorusScale):
     riff = generateStochasticMelody(verseScale, 4)
     verse = []
     verse.extend(riff)
@@ -151,7 +149,7 @@ def generateStochasticSong():
     verse.append(99)
     verse.append(99)
     chorus = generateStochasticMelody(chorusScale, 7)
-    chorus[0] = chorusScale[5];
+    chorus[0] = chorusScale[-1];
     chorus.append(99)
     song = []
     song.extend(verse)
@@ -168,6 +166,20 @@ def generateStochasticSong():
     song.extend(chorus)
     return song
 
+def generateStochasticSongMajor():
+    verseScale = [0, 2, 4, 5 ]
+    chorusScale = [0, 2, 4, 5, 7, -1, 9]
+    return generateStochasticSong(verseScale, chorusScale)
+
+def generateStochasticSongMinor():
+    verseScale = [-3, -1, 0, 2 ]
+    chorusScale = [-3, -1, 0, 2, 4, 7, 5 ]
+    return generateStochasticSong(verseScale, chorusScale)
+
+def generateStochasticSongBlues():
+    verseScale = [0, 3, 5, 6];
+    chorusScale = [0, 3, 5, 6, 7, 10];
+    return generateStochasticSong(verseScale, chorusScale)
     
 
 #
@@ -178,7 +190,19 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("songname", help="name of the song")
     parser.add_argument("lyricsfile", type=argparse.FileType('r'), help="name of the lyrics file")
+    parser.add_argument("scale", nargs='?', default='major', help="'major', 'minor', or 'blues', default is 'major'")
     args = parser.parse_args()
+
+    generateSong = None
+    if args.scale == 'major':
+        generateSong = generateStochasticSongMajor
+    elif args.scale == 'minor':
+        generateSong = generateStochasticSongMinor
+    elif args.scale == 'blues':
+        generateSong = generateStochasticSongBlues
+    else:
+        sys.stderr.write("Invalid scale '%s'\n" % (args.scale))
+        sys.exit(1)
 
     songnameSyllables = breakIntoSyllables(args.songname)
     lyricSyllables = breakIntoSyllables(args.lyricsfile.read())
@@ -194,7 +218,7 @@ if __name__ == "__main__":
 #    print "chorus", chorus
 
     
-    song = generateStochasticSong()
+    song = generateSong()
     root = generateXML(song)
     addLyrics(root, lyrics)
 

@@ -56,11 +56,12 @@ syllables should be enough). If there are unrecognized words you will have
 to add them to the syllable dictionary in the script.
 
 ```
-usage: generateStochasticSong.py [-h] songname lyricsfile
+usage: generateStochasticSong.py [-h] songname lyricsfile [scale]
 
 positional arguments:
   songname    name of the song
   lyricsfile  name of the lyrics file
+  scale       'major', 'minor', or 'blues', default is 'major'
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -74,5 +75,5 @@ First generate some lyrics using the weather script:
 
 Then use those lyrics to generate the song:
 
-> $ python generateStochasticSong.py London lyrics.txt >london.xml
+> $ python generateStochasticSong.py London lyrics.txt major >london.xml
 
