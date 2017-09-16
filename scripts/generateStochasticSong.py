@@ -191,7 +191,7 @@ if __name__ == "__main__":
     parser.add_argument("songname", help="name of the song")
     parser.add_argument("lyricsfile", type=argparse.FileType('r'), help="name of the lyrics file")
     parser.add_argument("scale", nargs='?', default='major', help="'major', 'minor', or 'blues', default is 'major'")
-    parser.add_argument("--tempo", default='500', help="tempo, default is 500")
+    parser.add_argument("--tempo", default='700', help="tempo, default is 700")
     args = parser.parse_args()
 
     generateSong = None
