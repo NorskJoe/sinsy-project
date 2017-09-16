@@ -93,7 +93,7 @@ def shiftNote(note, alter, octave, delta):
         newAlter = 1
     return newNote, newAlter, octave
     
-def generateXML(arr):
+def generateXML(arr, tempo):
     score_partwise = ET.Element('score-partwise')
     part_list = ET.SubElement(score_partwise, 'part-list')
     score_part = ET.SubElement(part_list, 'score-part')
@@ -108,7 +108,7 @@ def generateXML(arr):
         if measureNumber == 1:
             direction = ET.SubElement(measure, 'direction')
             sound = ET.SubElement(direction, 'sound')
-            sound.attrib['tempo'] = '300'
+            sound.attrib['tempo'] = tempo
         measureNumber += 1
         note = ET.SubElement(measure, 'note')
 #        type = ET.SubElement(note, 'type')
@@ -191,6 +191,7 @@ if __name__ == "__main__":
     parser.add_argument("songname", help="name of the song")
     parser.add_argument("lyricsfile", type=argparse.FileType('r'), help="name of the lyrics file")
     parser.add_argument("scale", nargs='?', default='major', help="'major', 'minor', or 'blues', default is 'major'")
+    parser.add_argument("--tempo", default='500', help="tempo, default is 500")
     args = parser.parse_args()
 
     generateSong = None
@@ -219,7 +220,7 @@ if __name__ == "__main__":
 
     
     song = generateSong()
-    root = generateXML(song)
+    root = generateXML(song, args.tempo)
     addLyrics(root, lyrics)
 
     #

@@ -56,15 +56,17 @@ syllables should be enough). If there are unrecognized words you will have
 to add them to the syllable dictionary in the script.
 
 ```
-usage: generateStochasticSong.py [-h] songname lyricsfile [scale]
+usage: generateStochasticSong.py [-h] [--tempo TEMPO]
+                                 songname lyricsfile [scale]
 
 positional arguments:
-  songname    name of the song
-  lyricsfile  name of the lyrics file
-  scale       'major', 'minor', or 'blues', default is 'major'
+  songname       name of the song
+  lyricsfile     name of the lyrics file
+  scale          'major', 'minor', or 'blues', default is 'major'
 
 optional arguments:
-  -h, --help  show this help message and exit
+  -h, --help     show this help message and exit
+  --tempo TEMPO  tempo, default is 500
 ```
 
 Example usage:
