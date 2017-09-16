@@ -66,7 +66,7 @@ positional arguments:
 
 optional arguments:
   -h, --help     show this help message and exit
-  --tempo TEMPO  tempo, default is 500
+  --tempo TEMPO  tempo, default is 700
 ```
 
 Example usage:
