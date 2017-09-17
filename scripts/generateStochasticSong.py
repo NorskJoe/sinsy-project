@@ -11,29 +11,29 @@ syllableDictionary = {
 'melbourne' : 'mell born',
 'london' : 'lon don',
 'the' : 'the',
-'weather' : 'weh ther',
+'weather' : 'weather',
 'is' : 'is',
-'forecasted' : 'fore cas ted',
+'forecasted' : 'fore casted',
 'to' : 'to',
 'be' : 'be',
 'partly' : 'part lee',
-'cloudy' : 'clow dee',
+'cloudy' : 'cloudy',
 'with' : 'with',
 'daytime' : 'day time',
-'temperature' : 'tem per a ture',
+'temperature' : 'tem pera chure',
 'reaching' : 'rea ching',
-'c' : 'sell see us',
+'c' : 'sell seeus',
 'night' : 'night',
 'time' : 'time',
 'are' : 'are',
-'expected' : 'ex pec ted',
+'expected' : 'ex pected',
 'cit' : 'cit',
 'will' : 'will',
 'stay' : 'stay',
 'dry' : 'dry',
 'no' : 'no',
-'precipitation' : 'prih sih pih tay shun',
-'visibility' : 'vih sih bil ih tee',
+'precipitation' : 'prihsih pihtay shun',
+'visibility' : 'visi bili tee',
 'going' : 'go ing',
 'around' : 'uh round',
 'km' : 'kee low mee ters',
@@ -41,18 +41,18 @@ syllableDictionary = {
 'miles' : 'my ules',
 'and' : 'and',
 'an' : 'an',
-'atmospheric' : 'at moe sphere ick',
+'atmospheric' : 'atmoe spherick',
 'pressure' : 'presh shure',
 'of' : 'of',
 'mb' : 'em bee',
 'it' : 'it',
 'cloud' : 'cloud',
-'covering' : 'kah ver ring',
+'covering' : 'kah vering',
 'sky' : 'sky',
-'humidity' : 'hue mih dih tee',
+'humidity' : 'huemih dihtee',
 'we' : 'we',
 'expect' : 'ex pect',
-'mm' : 'mill ih mee ters',
+'mm' : 'millih meeters',
 'fall' : 'fall',
 'i' : 'eye',
 'e' : 'ee',
@@ -69,9 +69,8 @@ def breakIntoSyllables(text):
         if word in syllableDictionary:
             results.extend(re.split(r'\s+', syllableDictionary[word]))
         else:
-            print "The word '" + word + "' is not in the syllableDictionary."
-            print "Add it by editing this script and then run it again."
-            sys.exit(1)
+            sys.stderr.write("Unknown word '" + word + "'. Add it to the dictionary by editing this script.\n")
+            results.append(word)
     return results
 
 

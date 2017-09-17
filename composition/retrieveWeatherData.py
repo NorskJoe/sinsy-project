@@ -47,6 +47,10 @@ if __name__ == "__main__":
 
     cities = \
     {
+        'Shitterton':'https://www.worldweatheronline.com/shitterton-weather-text/dorset/gb.aspx',
+        'Crapstone':'https://www.worldweatheronline.com/crapstone-weather-text/devon/gb.aspx',
+        'Hell':'https://www.worldweatheronline.com/hell-weather-text/michigan/us.aspx',
+        'Boring':'https://www.worldweatheronline.com/boring-weather-text/maryland/us.aspx',
         'London':'https://www.worldweatheronline.com/london-weather-text/city-of-london-greater-london/gb.aspx',
         'Melbourne':'https://www.worldweatheronline.com/melbourne-weather-text/victoria/au.aspx',
         'Miami':'https://www.worldweatheronline.com/miami-weather-text/florida/us.aspx',
