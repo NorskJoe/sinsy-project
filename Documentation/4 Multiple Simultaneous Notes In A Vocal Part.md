@@ -54,7 +54,12 @@ This will read the `input.xml` file and extract voice `1` from part `P1`.
 ## useChordNotes.py
 
 This script will replace the first note of the chord with the second note
-of the chord, which may be better for rendering with Sinsy.
+of the chord. All single notes will be turned into rests.
+
+If the desire is to sing multiple notes together, it would be preferable
+to use multiple voices and not chord notes.
+
+The behaviour when there are more than 2 chord notes is undefined.
 
 ```
 usage: useChordNotes.py [-h] [xmlfile]

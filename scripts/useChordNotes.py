@@ -6,17 +6,22 @@ import xml.etree.ElementTree as ET
 def useChordNotes(root):
     for a in root.findall('part'):
         for b in a.findall('measure'):
+            for c in b.findall('note'):
+                isChord = False
+                for d in c.findall('chord'):
+                    isChord = True
+                if isChord:
+                    continue
+                for d in c.findall('pitch'):
+                    c.remove(d)
+                ET.SubElement(c, 'restyyy')
+    for a in root.findall('part'):
+        for b in a.findall('measure'):
             originalNoteElement = None
             for c in b.findall('note'):
                 isChord = False
-                isRest = False
-                for d in c.findall('rest'):
-                    isRest = True
                 for d in c.findall('chord'):
                     isChord = True
-                if isRest:
-                    originalNoteElement = None
-                    continue
                 if not isChord:
                     originalNoteElement = c
                     continue
